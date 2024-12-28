@@ -13,7 +13,6 @@ export default function HomeScreen() {
     const fetchProducts = async () => {
       setLoading(true);
       const products = await getProducts();
-      console.log("products", products);
       setProducts(products);
       setLoading(false);
     };

@@ -1,10 +1,12 @@
 import { getProduct } from "@/api/products";
+import { useCart } from "@/context/cartContext";
 import { useLocalSearchParams } from "expo-router/build/hooks";
 import { useEffect, useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const ProductDetailsScreen = () => {
   const { id } = useLocalSearchParams();
+  const { onAddToCart } = useCart();
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
@@ -17,7 +19,11 @@ const ProductDetailsScreen = () => {
   }, []);
 
   if (!product) {
-    return <Text>Error occured while fetching product details.</Text>;
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text>Error occured while fetching product details.</Text>
+      </View>
+    );
   }
 
   return (
@@ -30,7 +36,7 @@ const ProductDetailsScreen = () => {
       </View>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => alert("Product added to cart")}
+        onPress={() => onAddToCart(product.id)}
       >
         <Text style={styles.buttonText}>Add to Cart</Text>
       </TouchableOpacity>

@@ -20,7 +20,11 @@ export default function HomeScreen() {
   }, []);
 
   if (!products) {
-    return <Text>Error occured while fetching products.</Text>;
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text>Error occured while fetching products.</Text>
+      </View>
+    );
   }
 
   if (loading) {

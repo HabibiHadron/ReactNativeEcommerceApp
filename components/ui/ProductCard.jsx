@@ -1,12 +1,6 @@
 import { Link } from "expo-router";
 import React from "react";
-import {
-  Text,
-  Image,
-  StyleSheet,
-  TouchableOpacity,
-  Pressable,
-} from "react-native";
+import { Text, Image, StyleSheet, Pressable } from "react-native";
 
 const ProductCard = ({ product }) => {
   return (
@@ -16,12 +10,6 @@ const ProductCard = ({ product }) => {
         <Text style={styles.title}>{product.title}</Text>
         <Text style={styles.description}>{product.description}</Text>
         <Text style={styles.price}>${product.price}</Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => alert("Added to Cart")}
-        >
-          <Text style={styles.buttonText}>Add to Cart</Text>
-        </TouchableOpacity>
       </Pressable>
     </Link>
   );
